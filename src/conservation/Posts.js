@@ -1,10 +1,10 @@
-const Posts = ({todo, deleteMutation}) =>{
+const Posts = ({message, handleDelete}) =>{
 
     return(
         <div>
-        <p className="con11">{todo.title} </p>
-        <p className="con12">{todo.date}</p>
-        <button className='delete' onClick={() => deleteMutation.mutate({id: todo.id})}>X</button>
+        <p className="con11">{message.item} </p>
+        <p className="con12">{message.date}</p>
+        <button className='delete' onClick={() => handleDelete(message.id)}>X</button>
         </div>
     )
 }

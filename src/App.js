@@ -1,67 +1,119 @@
-//import {format} from "date-fns"
+import moment from "moment/moment";
 import { useState } from "react"
-import { useEffect } from "react"
-import { getPosts,getItems, getChat } from "./api/axios"
 import Home from "./dashboard/Home"
 import Conservation from "./conservation/Conservation"
 import { Route, Routes } from "react-router-dom"
 const App = () =>{
-
-    const [items, setItems] = useState([])
-    const [posts, setPosts] = useState([])
-    const [chats, setChats] = useState([])
     const [comment, setComment] = useState('')
-    const [messages, setMesages] = useState(JSON.parse(localStorage.getItem('shoppinglist'))|| [])
-    const [searchResults, setSearchResults] = useState([])
+    const [messages, setMesages] = useState(JSON.parse(localStorage.getItem('shoppinglist')))
+    const [search, setSearch] = useState('')
+    const [chats, setChats] = useState([
+        {
+          icon: "images/image-1.jpeg",
+          names: "jane Doe",
+          text: "Hi, i want make enquiries about yo...",
+          new: "new",
+          mins: "12:55am",
+          id: "1"
+        },
+        {
+          icon: "images/image-2.jpeg",
+          id: "2",
+          names: "janet Adebayo",
+          text: "Hi, i want make enquiries about yo...",
+          new: "new",
+          mins: "12:55am"
+        },
+        {
+          id: "3",
+          icon: "images/image-3.jpeg",
+          names: "Kunle Adekunle",
+          text: "Hi, i want make enquiries about yo...",
+          new: "new",
+          mins: "12:55am"
+        },
+        {
+          id: "4",
+          icon: "images/image-1.jpeg",
+          names: "jane Doe",
+          text: "Hi, i want make enquiries about yo...",
+          new: "2",
+          mins: "12:55am"
+        },
+        {
+          icon: "images/image-2.jpeg",
+          id: "5",
+          names: "janet Adebayo",
+          text: "Hi, i want make enquiries about yo...",
+          mins: "12:55am"
+        },
+        {
+          icon: "images/image-3.jpeg",
+          id: "6",
+          names: "Kunle Adekunle",
+          text: "Hi, i want make enquiries about yo...",
+          mins: "12:55am"
+        },
+        {
+          id: "7",
+          names: "jane Doe",
+          text: "Hi, i want make enquiries about yo...",
+          icon: "images/image-1.jpeg",
+          mins: "12:55am"
+        },
+        {
+          id: "8",
+          names: "janet Adebayo",
+          text: "Hi, i want make enquiries about yo...",
+          icon: "images/image-2.jpeg",
+          mins: "12:55am"
+        },
+        {
+          id: "9",
+          names: "Kunle Adekunle",
+          text: "Hi, i want make enquiries about yo...",
+          icon: "images/image-3.jpeg",
+          mins: "12:55am"
+        }
+      ])
 
-
-    const handleComment = (e) =>{
+    const saveListItem = (comments) =>{
+        setMesages(comments)
+        localStorage.setItem('shoppinglist', JSON.stringify(comments))
+    }
+    const handleSubmit = (e) =>{
         e.preventDefault()
-        const id = messages.length ? messages[messages.length -1 ].id + 1 : 1
-        const items = {id, title:comment}
-        const results = [...messages, items]
-        setMesages(results)
+
+        if(!comment) return 
+        addItem(comment)
         setComment('')
     }
-    useEffect(() =>{
-
-        getItems().then(json=>{
-            setItems(json)
-            return json
-        });
-        getChat().then(json=>{
-            setChats(json)
-            return json
-        }).then(json =>{
-            setSearchResults(json)
-        });
-        getPosts().then(json=>{
-            setPosts(json)
-            return json
-        });
-
-    
-    }, [])
+    const addItem = (item) =>{
+        const date = moment().format('h:mm a')
+        const id = messages.length ? messages[messages.length - 1].id + 1 : 1
+        const items = {id,item, date}
+        const results = [...messages, items]
+        saveListItem(results)
+    }
+    const handleDelete = async(id) =>{
+        const results = messages.filter((message) => message.id !== id)
+        saveListItem(results)
+    }
        
-useEffect(() =>{
-
-    localStorage.setItem('shoppinglist', JSON.stringify(messages))
-
-},[messages])
     return(
 
         <div>
             <Routes>
-            <Route path="/" element={<Home items={items} 
-                    posts={posts}
-            />} />
+            <Route path="/" element={<Home />} />
             <Route path="/chat" element={<Conservation chats={chats}
-                    searchResults={searchResults}
-                    handleComment={handleComment}
+                    search={search}
+                    handleSubmit={handleSubmit}
                     messages={messages}
+                    handleDelete={handleDelete}
                     comment={comment}
                     setComment={setComment}
-                    setSearchResults={setSearchResults}
+                    setChats={setChats}
+                    setSearch={setSearch}
             />} />
             </Routes>
         

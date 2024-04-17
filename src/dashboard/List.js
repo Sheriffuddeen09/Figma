@@ -2,7 +2,8 @@ import ProgressBar from "./ProgressBar"
 import ListItem from "./ListItem"
 import Order from "./Order"
 import Main from "./Main"
-const List = ({items, posts}) =>{
+import { items } from "./Map"
+const List = () =>{
 
     return (
 <div className='div30'>
@@ -24,7 +25,7 @@ const List = ({items, posts}) =>{
     </div>
     </div>
         <div className='div31'>
-        <Order posts={posts}/>
+        <Order/>
     </div>
 </div>
     )

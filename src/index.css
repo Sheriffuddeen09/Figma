@@ -144,9 +144,9 @@ div0{
     padding: 0 10px;
     margin: 10px 10px;
     translate: -50px;
-    animation: animate 2s linear;
+    animation: animatee 2s ease-in-out;
 }
-@keyframes animate{
+@keyframes animatee {
     from{
         transform: translateX(400px);
     }
@@ -326,7 +326,7 @@ div0{
     translate: 5px;
 }
 .div17{
-    background-color: rgb(138, 138, 228);
+    background-color: blue;
     padding: 5px;
     color: white;
     width: 200px;
@@ -343,7 +343,7 @@ div0{
     width: 200px;
     margin-right: 10px;
     border-radius: 5px;
-    animation: animates 2s linear;
+
 }
 @keyframes animates{
     from{
@@ -402,7 +402,7 @@ div0{
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
-    margin:2px -20px;
+    margin:2px -60px;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;

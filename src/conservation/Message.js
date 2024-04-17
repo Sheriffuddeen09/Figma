@@ -1,7 +1,7 @@
 import logo from './images/image-1.jpeg'
 import logos from './images/Logo-1.png'
 import Comment from './Comment'
-const Message = () =>{
+const Message = ({handleSubmit, messages, comment, setComment, handleDelete}) =>{
 
     return(
 
@@ -62,7 +62,12 @@ const Message = () =>{
      <p className="con10a">12:55am</p>
  </div>
         <div>
-            <Comment />
+            <Comment messages={messages} 
+             handleSubmit={handleSubmit}
+             handleDelete={handleDelete}
+             comment={comment}
+             setComment={setComment}
+             />
         </div>
     </section>
 

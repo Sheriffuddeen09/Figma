@@ -1,51 +1,16 @@
-import moment from "moment/moment";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import { useState } from "react";
 import Posts from "./Posts"
-import { getQuery, getAddMessage, getDeleteMessage } from "../api/axios";
-const Comment = () =>{
-    const [newTodo, setNewTodo] = useState('')
-    const queryClient = useQueryClient()
-    const{
-        isLoading,
-        error,
-        isError,
-        data: querys,
-    } = useQuery('/querys', getQuery, {
-        
-    })
-
-    const addMutation = useMutation(getAddMessage, {
-        Selection: () =>{
-            queryClient.invalidateQueries('querys')
-        }
-    })
-    const deleteMutation = useMutation(getDeleteMessage, {
-        Selection: () =>{
-            queryClient.invalidateQueries('querys')
-        }
-    })
-
-    const handleSubmit =(e) =>{
-        const date = moment().format('h:mm a')
-        e.preventDefault()
-        setNewTodo('')
-        addMutation.mutate({userId: 1, title: newTodo, date})
-    }
-    let content
-
-    if (isLoading) return <p>loading.....</p>
-    else if (isError) return <p>{error.message}</p>
+const Comment = ({comment, setComment, handleDelete, messages}) =>{
     
-    else{
-    content = querys.map((todo) =>{
-        return <Posts todo={todo} key={todo.id} 
-        deleteMutation={deleteMutation}
+   const content = messages.map((message) =>{
+        return (
+        <Posts message={message} key={message.id} 
+        handleDelete={handleDelete}
         />
+        )
     })
-}
+
     const Input = (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => e.preventDefault()}>
     <p className='emoj'>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" className='iconxi'>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -57,10 +22,10 @@ const Comment = () =>{
 </svg>
 </p>
             <input 
-            value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value) }
-            placeholder= 'New Todos'
-            id="querys"
+            value={comment}
+            onChange={(e) => setComment(e.target.value) }
+            placeholder= 'Message'
+            id="messages"
             className="input"
             type="text"
             />

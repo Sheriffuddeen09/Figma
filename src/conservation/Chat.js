@@ -1,17 +1,7 @@
 import ChatList from "./ChatList"
 
-const Chat = ({chats, setSearchResults, searchResults}) =>{
+const Chat = ({chats, setSearch, search}) =>{
 
-    const handleSubmit = (e) => e.preventDefault()
-
-    const handleChange = (e) =>{
-        if(!e.target.value) return setSearchResults(chats)
-
-        const search = chats.filter(post => post.names.includes(e.target.value)
-    || post.text.includes(e.target.value))
-    
-      return setSearchResults(search)
-    }
 
     return (
     <div style={{
@@ -31,9 +21,10 @@ marginTop: '-10px'
         <p>Contact</p>
         <p>36</p>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form>
         <input type='text' 
-        onChange={handleChange}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
         id='search'
         className="inputs"/>
         </form>
@@ -41,7 +32,7 @@ marginTop: '-10px'
     <div>
 
         {
-            searchResults.map((chat) =>(
+            chats.map((chat) =>(
                 <ChatList key={chat.id} chat={chat}/>
             ))
         }

@@ -4,7 +4,7 @@ import Foot from "./Foot"
 import Chat from "./Chat"
 import Icons from "./Icons"
 import logo from './images/images5.png'
-const Conservation = ({chats, handleComment,searchResults,messages,comment,setComment,setSearchResults}) =>{
+const Conservation = ({chats, handleSubmit, handleDelete,search,messages,comment,setComment,setSearch}) =>{
 
 return (
 <div className="dashboa">
@@ -46,15 +46,16 @@ textAlign: 'center'
     <div>
         <Chat
         chats={chats}
-        searchResults={searchResults}
-        setSearchResults={setSearchResults}
+        search={search}
+        setSearch={setSearch}
         />
     </div>
         <div>
         <Message 
         comment={comment}
         setComment={setComment}
-        handleComment={handleComment}
+        handleSubmit={handleSubmit}
+        handleDelete={handleDelete}
         messages={messages}
         />
        </div>

@@ -1,6 +1,6 @@
 import OrderList from "./OrderList"
-
-const Order = ({posts}) =>{
+import { posts } from "./Dashboard"
+const Order = () =>{
 
     return(
         <div>
