@@ -1,7 +1,6 @@
 export const items = [
     {
         id: "1",
-        logo: 23,
         week: "This week",
         sale: "Sales",
         volume: "Volume",
@@ -21,7 +20,6 @@ export const items = [
       },
       {
         id: "3",
-        logo: 23,
         week: "This week",
         sale: "AllOrders",
         volume: "Pending",

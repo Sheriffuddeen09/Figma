@@ -1,5 +1,8 @@
 import moment from "moment/moment";
 import { useState } from "react"
+import Logo from './images/image-1.jpeg'
+import Log from './images/image-3.jpeg'
+import Logos from './images/image-2.jpeg'
 import Home from "./dashboard/Home"
 import Conservation from "./conservation/Conservation"
 import { Route, Routes } from "react-router-dom"
@@ -9,7 +12,7 @@ const App = () =>{
     const [search, setSearch] = useState('')
     const [chats, setChats] = useState([
         {
-          icon: "images/image-1.jpeg",
+          icon: Logo,
           names: "jane Doe",
           text: "Hi, i want make enquiries about yo...",
           new: "new",
@@ -17,7 +20,7 @@ const App = () =>{
           id: "1"
         },
         {
-          icon: "images/image-2.jpeg",
+          icon: Logos,
           id: "2",
           names: "janet Adebayo",
           text: "Hi, i want make enquiries about yo...",
@@ -26,7 +29,7 @@ const App = () =>{
         },
         {
           id: "3",
-          icon: "images/image-3.jpeg",
+          icon: Log,
           names: "Kunle Adekunle",
           text: "Hi, i want make enquiries about yo...",
           new: "new",
@@ -34,21 +37,21 @@ const App = () =>{
         },
         {
           id: "4",
-          icon: "images/image-1.jpeg",
+          icon: Logo,
           names: "jane Doe",
           text: "Hi, i want make enquiries about yo...",
           new: "2",
           mins: "12:55am"
         },
         {
-          icon: "images/image-2.jpeg",
+          icon: Logos,
           id: "5",
           names: "janet Adebayo",
           text: "Hi, i want make enquiries about yo...",
           mins: "12:55am"
         },
         {
-          icon: "images/image-3.jpeg",
+          icon: Log,
           id: "6",
           names: "Kunle Adekunle",
           text: "Hi, i want make enquiries about yo...",
@@ -58,21 +61,21 @@ const App = () =>{
           id: "7",
           names: "jane Doe",
           text: "Hi, i want make enquiries about yo...",
-          icon: "images/image-1.jpeg",
+          icon: Logo,
           mins: "12:55am"
         },
         {
           id: "8",
           names: "janet Adebayo",
           text: "Hi, i want make enquiries about yo...",
-          icon: "images/image-2.jpeg",
+          icon: Logos,
           mins: "12:55am"
         },
         {
           id: "9",
           names: "Kunle Adekunle",
           text: "Hi, i want make enquiries about yo...",
-          icon: "images/image-3.jpeg",
+          icon: Log,
           mins: "12:55am"
         }
       ])

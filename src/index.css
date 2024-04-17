@@ -407,6 +407,19 @@ div0{
     align-items: center;
     border-radius: 10px;
 }
+.div28a{
+    border: 0.3px solid rgb(240, 240, 240);
+    background-color: white;
+    width: 320px;
+    font-size: 12px;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    margin:2px -20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
 .div30{
     display: inline-flex;
 }

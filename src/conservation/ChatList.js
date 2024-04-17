@@ -4,7 +4,7 @@ const ChatList = ({chat}) =>{
         <div>
         <div className='div32'>
             
-            <div className='div28'>
+            <div className='div28a'>
                 <img src={chat.icon} alt='iphone' width={30} height={30} />
             <div className='div27'>
             <p>
